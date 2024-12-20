@@ -596,7 +596,7 @@ async def main(incode):
         print('请复制网址到浏览器进行谷歌验证：')
         print(reCaptcha_url)
         captcha_url = urlparse(input('请复制通过验证后的网址在此处：'))
-        # captcha_token_info = await get_new_token(captcha_url, xid, Init['captcha_token'])
+        captcha_token_info = await get_new_token(captcha_url, xid, Init['captcha_token'])
         captcha_token = parse_qs(captcha_url.query).get('captcha_token', [''])[0]
         verification_id = await verification(captcha_token, xid, mail)
         code = await get_code(mail)
